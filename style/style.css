@@ -46,7 +46,7 @@ body {
     }
 
     &.cursor--hover {
-        animation: cursor-animation 0.3s ease-in-out infinite;
+        animation: cursor-animation .5s ease-in-out infinite;
 
         &::before {
             background-color: red;
@@ -58,14 +58,13 @@ body {
 
 @keyframes cursor-animation {
 
-    0% {
-        width: 0px;
-        height: 0px;
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
     }
 
-    100% {
-        width: 5px;
-        height: 5px;
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
     }
 
 }

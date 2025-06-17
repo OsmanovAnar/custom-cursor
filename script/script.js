@@ -1,10 +1,13 @@
 const cursor = document.querySelector(".cursor");
-const link = document.querySelectorAll("a");
+const links = document.querySelectorAll("a");
 const buttons = document.querySelectorAll("button");
 const coordsX = document.querySelector(".coords__x");
 const coordsY = document.querySelector(".coords__y");
 
 document.addEventListener("mousemove", updateCoords);
+
+const addActiveClass = () => cursor.classList.add("cursor--hover");
+const removeActiveClass = () => cursor.classList.remove("cursor--hover");
 
 function updateCoords({ clientX, clientY }) {
     cursor.style.left = clientX + "px";
@@ -15,18 +18,25 @@ function updateCoords({ clientX, clientY }) {
 
 links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
-        cursor.classList.remove("cursor--hover");
+        addActiveClass()
     });
 
-    buttons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-            addActiveClass();
-        });
+    link.addEventListener("mouseleave", () => {
+        removeActiveClass();
     });
-    button.addEventListener("mouseLeave", () => {
+
+
+});
+
+
+
+buttons.forEach((button) => {
+    button.addEventListener("mouseenter", () => {
+        addActiveClass();
+    });
+
+    buttons.addEventListener("mouseLeave", () => {
         removeActiveClass();
     });
 });
 
-const addActiveClass = () => cursor.classList.add("cursor--hover");
-const removeActiveClass = () => cursor.classList.remove("cursor--hover");
