@@ -1,0 +1,32 @@
+const cursor = document.querySelector(".cursor");
+const link = document.querySelectorAll("a");
+const buttons = document.querySelectorAll("button");
+const coordsX = document.querySelector(".coords__x");
+const coordsY = document.querySelector(".coords__y");
+
+document.addEventListener("mousemove", updateCoords);
+
+function updateCoords({ clientX, clientY }) {
+    cursor.style.left = clientX + "px";
+    cursor.style.top = clientY + "px";
+    coordsX.textContent = clientX;
+    coordsY.textContent = clientY;
+}
+
+links.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+        cursor.classList.remove("cursor--hover");
+    });
+
+    buttons.forEach((button) => {
+        button.addEventListener("mouseenter", () => {
+            addActiveClass();
+        });
+    });
+    button.addEventListener("mouseLeave", () => {
+        removeActiveClass();
+    });
+});
+
+const addActiveClass = () => cursor.classList.add("cursor--hover");
+const removeActiveClass = () => cursor.classList.remove("cursor--hover");
